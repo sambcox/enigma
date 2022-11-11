@@ -8,9 +8,8 @@ class Enigma
 
   def encrypt(to_be_encrypted, key = random_key, date = today_date)
     key_made = key_maker(key, date)
-    to_encrypt_split = to_be_encrypted.downcase.chars
     encrypted = []
-    to_encrypt_split.each_with_index do |letter, index|
+    to_encrypt_split(to_be_encrypted).each_with_index do |letter, index|
       encrypted << new_character(letter, key_made[index % 4])
     end
     {encryption: encrypted.join, key: key, date: date}
