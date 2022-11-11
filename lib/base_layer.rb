@@ -1,9 +1,15 @@
+require 'time'
+
 module BaseLayer
   def random_key
     possibilities = Array('0'..'9')
     key_apart = []
     5.times { key_apart << possibilities.sample }
     key_apart.join
+  end
+
+  def today_date
+    Time.now.strftime("%D").to_s.delete('/')
   end
 
   def alphabet
