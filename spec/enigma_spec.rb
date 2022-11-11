@@ -22,4 +22,12 @@ RSpec.describe Enigma do
       date: "040895"
     })
   end
+
+  it 'can crack a string' do
+    expect(enigma.crack("vjqtbeaweqihssi", "291018")).to eq({
+      decryption: "hello world end",
+      date: "291018",
+      key: "08304"
+    })
+  end
 end
