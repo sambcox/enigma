@@ -14,11 +14,11 @@ RSpec.describe BaseLayer do
   end
 
   it 'can get the information from the date needed to encrypt' do
-    expect(enigma.date_mover("052797")).to eq([3, 2, 0, 9])
+    expect(enigma.date_mover("270597")).to eq([6, 4, 0, 9])
   end
 
   it 'can get the amount to move the character for all 1 through 4' do
-    expect(enigma.key_maker('52138', '052797')).to eq([1, 23, 13, 20])
+    expect(enigma.key_maker('52138', '270597')).to eq([4, 25, 13, 20])
   end
   it 'can return todays date as a correctly formatted string' do
     date = Time.now.strftime("%D").to_s.delete("/")

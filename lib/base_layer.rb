@@ -9,7 +9,7 @@ module BaseLayer
   end
 
   def today_date
-    Time.now.strftime("%D").to_s.delete('/')
+    Time.now.strftime("%d%m%y").to_s.delete('/')
   end
 
   def alphabet
@@ -25,7 +25,7 @@ module BaseLayer
     key_split = key.split('')
     key_made = []
     key_split.each_with_index do |key_indv, index|
-      unless index == 4
+      unless index >= 4
         key_made << (([key_indv, key_split[index + 1]].join.to_i) + date_moved[index]) % 27
       end
     end
