@@ -20,5 +20,9 @@ class Enigma
     key_made = key_maker(key, date)
     to_decrypt_split = to_be_decrypted.downcase.chars
     decrypted = []
+    to_decrypt_split.each_with_index do |letter, index|
+      decrypted << old_character(letter, key_made[index % 4])
+    end
+    {decryption: decrypted.join, key: key, date: date}
   end
 end
