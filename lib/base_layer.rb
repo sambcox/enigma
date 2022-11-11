@@ -16,6 +16,12 @@ module BaseLayer
     Array('a'..'z').push(' ')
   end
 
+  def to_encrypt_split(to_encrypt)
+    to_encrypt.downcase.chars.delete_if do |character|
+      !alphabet.include?(character)
+    end
+  end
+
   def date_mover(date)
     (date.to_i ** 2).digits.reverse.last(4)
   end
