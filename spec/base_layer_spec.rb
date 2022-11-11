@@ -11,4 +11,8 @@ RSpec.describe BaseLayer do
   it 'can get the information from the date needed to encrypt' do
     expect(enigma.date_mover("052797")).to eq([3, 2, 0, 9])
   end
+
+  it 'can get the amount to move the character for all 1 through 4' do
+    expect(enigma.key_maker('52138', '052797')).to eq([1, 23, 13, 20])
+  end
 end

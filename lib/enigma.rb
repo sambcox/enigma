@@ -4,9 +4,9 @@ require_relative 'base_layer'
 class Enigma
   include BaseLayer
   def encrypt(to_be_encrypted, key, date = Date.today.to_s.delete('-'))
-    date_mover(date)
+    date_parsed = date_mover(date)
     key_split = key.split('')
-    key_1 = (key_split.first(2).join.to_i) + date_mover.first
+    key_1 = (key_split.first(2).join.to_i) + date_parsed.first
     as_arr = to_be_encrypted.chars
     encrypted = []
     as_arr.each_with_index do |letter, index|
