@@ -26,6 +26,10 @@ class Enigma
   end
 
   def crack(encryption, date = today_date)
-
+    remainder = encryption.length % 4
+    encryption_ending = encryption.split('').last(4).join
+    movement_table = encryption_movement(encryption_ending, remainder)
+    key = key_recreator(movement_table, date)
+    decrypt(encryption, key, date)
   end
 end
