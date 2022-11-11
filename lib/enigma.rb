@@ -3,7 +3,7 @@ require_relative 'base_layer'
 
 class Enigma
   include BaseLayer
-  def encrypt(to_be_encrypted, key, date = Date.today.to_s.delete('-'))
+  def encrypt(to_be_encrypted, key = random_key, date = Date.today.to_s.delete('-'))
     key_made = key_maker(key, date)
     as_arr = to_be_encrypted.chars
     encrypted = []

@@ -1,4 +1,11 @@
 module BaseLayer
+  def random_key
+    possibilities = Array('0'..'9')
+    key_apart = []
+    5.times { key_apart << possibilities.sample }
+    key_apart.join
+  end
+
   def alphabet
     Array('a'..'z').push(' ')
   end
