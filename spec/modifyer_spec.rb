@@ -13,4 +13,8 @@ RSpec.describe Modifyer do
     expect(enigma.old_character('i', 1)).to eq('h')
     expect(enigma.old_character('w', 23)).to eq(' ')
   end
+
+  it 'can find the movement amount when attempting to crack' do
+    expect(enigma.encryption_movement('hssi')).to eq([14, 5, 5, 8])
+  end
 end
