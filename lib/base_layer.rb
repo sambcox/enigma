@@ -24,9 +24,11 @@ module BaseLayer
     date_moved = date_mover(date)
     key_split = key.split('')
     key_made = []
-    key_made << ((key_split.first(2).join.to_i) + date_moved.first) % 27
-    key_made << ((key_split[1, 2].join.to_i) + date_moved[1]) % 27
-    key_made << (([key_split[2], key_split[3]].join.to_i) + date_moved[2]) % 27
-    key_made << ((key_split[3, 4].join.to_i) + date_moved[3]) % 27
+    key_split.each_with_index do |key_indv, index|
+      unless index == 4
+        key_made << (([key_indv, key_split[index + 1]].join.to_i) + date_moved[index]) % 27
+      end
+    end
+    key_made
   end
 end
