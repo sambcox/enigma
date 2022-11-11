@@ -9,6 +9,6 @@ RSpec.describe BaseLayer do
   end
 
   it 'can get the information from the date needed to encrypt' do
-    expect enigma.date_mover("052797").to eq([3, 2, 0, 9])
+    expect(enigma.date_mover("052797")).to eq([3, 2, 0, 9])
   end
 end
