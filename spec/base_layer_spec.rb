@@ -20,4 +20,8 @@ RSpec.describe BaseLayer do
   it 'can get the amount to move the character for all 1 through 4' do
     expect(enigma.key_maker('52138', '052797')).to eq([1, 23, 13, 20])
   end
+  it 'can return todays date as a correctly formatted string' do
+    date = Time.now.strftime("%D").to_s.delete("/")
+    expect(enigma.today_date).to eq(date)
+  end
 end
