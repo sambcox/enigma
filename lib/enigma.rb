@@ -24,4 +24,8 @@ class Enigma
     end
     {decryption: decrypted.join, key: key, date: date}
   end
+
+  def crack(encryption, date = today_date)
+
+  end
 end
