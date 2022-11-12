@@ -39,9 +39,15 @@ module Modifyer
       next if index == 0
       next key_recreated << '0' if key_recreated.chars.last.to_i * 10 - 27 == integer
       next key_recreated << integer.to_s if key_recreated.chars.last == '0'
-      (integer += 27) until (key_recreated.chars.last.to_i == integer.digits.last)
+      integer += 27 until (key_recreated.chars.last.to_i == integer.digits.last && integer.digits.length > 1)
       key_recreated << (integer.digits.first.to_s)
     end
     key_recreated
+  end
+
+  def code_breaker(string, key)
+    string.downcase.chars.map.with_index do |letter, index|
+      old_character(letter, key[index % 4])
+    end.join
   end
 end

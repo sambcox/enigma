@@ -29,7 +29,11 @@ class Enigma
     remainder = encryption.length % 4
     encryption_ending = encryption.split('').last(4).join
     movement_table = encryption_movement(encryption_ending, remainder)
-    key = key_recreator(movement_table, date)
-    decrypt(encryption, key, date)
+    key_1 = key_recreator(movement_table, date)
+    decryp_first = decrypt(encryption, key_1, date)
+    return decryp_first if decryp_first[:decryption] == code_breaker(encryption, movement_table)
+    new_table = movement_table
+    new_table[0] += 27 until decrypt(encryption, key_recreator(new_table, date), date)[:decryption] == code_breaker(encryption, movement_table)
+    decrypt(encryption, key_recreator(new_table, date), date)
   end
 end
