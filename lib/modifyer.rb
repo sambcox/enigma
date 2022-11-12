@@ -7,7 +7,7 @@ module Modifyer
 
   def old_character(character, movement)
     old_index = alphabet.index(character) - movement
-    return alphabet[old_index] if old_index >=0
+    return alphabet[old_index] if old_index >= 0
     alphabet[old_index + 27]
   end
 
