@@ -15,6 +15,6 @@ RSpec.describe Modifyer do
   end
 
   it 'can find the movement amount when attempting to crack' do
-    expect(enigma.encryption_movement('hssi', 3)).to eq([14, 5, 5, 8])
+    expect(enigma.encryption_movement(["h", "s", "s", "i"], 3)).to eq([14, 5, 5, 8])
   end
 end

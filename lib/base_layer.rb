@@ -2,10 +2,7 @@ require 'time'
 
 module BaseLayer
   def random_key
-    possibilities = Array('0'..'9')
-    key_apart = []
-    5.times { key_apart << possibilities.sample }
-    key_apart.join
+    Array.new(5) { rand(9) }.join
   end
 
   def today_date
@@ -28,13 +25,10 @@ module BaseLayer
 
   def key_maker(key, date)
     date_moved = date_mover(date)
-    key_split = key.split('')
-    key_made = []
-    key_split.each_with_index do |key_indv, index|
+    key.chars.filter_map.with_index do |key_indv, index|
       unless index >= 4
-        key_made << (([key_indv, key_split[index + 1]].join.to_i) + date_moved[index]) % 27
+        (([key_indv, key.chars[index + 1]].join.to_i) + date_moved[index]) % 27
       end
     end
-    key_made
   end
 end
