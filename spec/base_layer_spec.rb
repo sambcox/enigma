@@ -21,7 +21,7 @@ RSpec.describe BaseLayer do
     expect(enigma.key_maker('52138', '270597')).to eq([4, 25, 13, 20])
   end
   it 'can return todays date as a correctly formatted string' do
-    date = Time.now.strftime("%D").to_s.delete("/")
+    date = Time.now.strftime("%d%m%y").to_s.delete("/")
     expect(enigma.today_date).to eq(date)
   end
 end
