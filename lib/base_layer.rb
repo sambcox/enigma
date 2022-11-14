@@ -14,9 +14,7 @@ module BaseLayer
   end
 
   def to_encrypt_split(to_encrypt)
-    to_encrypt.downcase.chars.delete_if do |character|
-      !alphabet.include?(character)
-    end
+    to_encrypt.downcase.chars
   end
 
   def date_mover(date)
