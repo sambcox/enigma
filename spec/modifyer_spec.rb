@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/enigma'
 require './lib/base_layer'
 require './lib/modifyer'
@@ -15,6 +17,18 @@ RSpec.describe Modifyer do
   end
 
   it 'can find the movement amount when attempting to crack' do
-    expect(enigma.encryption_movement(["h", "s", "s", "i"], 3)).to eq([14, 5, 5, 8])
+    expect(enigma.encryption_movement(%w[h s s i], 3)).to eq([14, 5, 5, 8])
+  end
+
+  it 'can find the original key given the movement and the date' do
+    expect(enigma.key_recreator([14, 5, 5, 8], '291018')).to eq('08304')
+  end
+
+  it 'can find the original message given just the movement' do
+    expect(enigma.code_breaker('vjqtbeaweqihssi', [14, 5, 5, 8])).to eq('hello world end')
+  end
+
+  it 'can make an encrypted string given movement and an unencrypted string' do
+    expect(enigma.code_maker('hello world end', [14, 5, 5, 8])).to eq('vjqtbeaweqihssi')
   end
 end
