@@ -10,10 +10,7 @@ class Enigma
 
   def encrypt(to_be_encrypted, key = random_key, date = today_date)
     key_made = key_maker(key, date)
-    encrypted = to_encrypt_split(to_be_encrypted).map.with_index do |letter, index|
-      new_character(letter, key_made[index % 4])
-    end
-    { encryption: encrypted.join, key: key, date: date }
+    { encryption: code_maker(to_be_encrypted, key_made), key: key, date: date }
   end
 
   def decrypt(to_be_decrypted, key, date = today_date)

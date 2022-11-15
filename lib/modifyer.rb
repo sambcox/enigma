@@ -15,6 +15,12 @@ module Modifyer
     alphabet[old_index]
   end
 
+  def code_maker(to_encrypt, key_made)
+    to_encrypt.downcase.chars.map.with_index do |letter, index|
+      new_character(letter, key_made[index % 4])
+    end.join
+  end
+
   def encryption_movement(last_4, remainder)
     split_guide = [' ', 'e', 'n', 'd']
     final_movement = last_4.map.with_index do |character, index|
