@@ -21,8 +21,8 @@ class Enigma
   def crack(encryption, date = today_date)
     encryption_ending = encryption.chars.last(4)
     movement_table = encryption_movement(encryption_ending, encryption.length % 4)
-    key_1 = key_recreator(movement_table, date)
-    decryp_first = decrypt(encryption, key_1, date)
+    key1 = key_recreator(movement_table, date)
+    decryp_first = decrypt(encryption, key1, date)
     return decryp_first if decryp_first[:decryption] == code_breaker(encryption, movement_table)
 
     new_table = movement_table
