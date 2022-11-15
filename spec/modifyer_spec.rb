@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/enigma'
 require './lib/base_layer'
 require './lib/modifyer'
@@ -15,6 +17,6 @@ RSpec.describe Modifyer do
   end
 
   it 'can find the movement amount when attempting to crack' do
-    expect(enigma.encryption_movement(["h", "s", "s", "i"], 3)).to eq([14, 5, 5, 8])
+    expect(enigma.encryption_movement(%w[h s s i], 3)).to eq([14, 5, 5, 8])
   end
 end

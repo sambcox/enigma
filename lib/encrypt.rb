@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'enigma'
 
 read_file = ARGV[0].dup.prepend('./lib/')
