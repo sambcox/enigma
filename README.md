@@ -11,3 +11,6 @@ I feel that I did well here, although possibly not as well as the previous items
 
 ## Test Driven Development
 I feel again that I did well here. I am covering 100% of my code based on SimpleCov, as well all of my methods are tested. My only shortfall is that I did not use any mocks or stubs, which I felt were unnecessary as everthing is both unit and integration tested.
+
+## Version Control
+Lastly, I feel I did well here. I have 40 commits and 11 pull requests as of writing this, and they are all well named and communicate what I am doing. All items in pull requests are related, such as encrypt, decrypt, and crack.
