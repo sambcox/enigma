@@ -1,23 +1,16 @@
 # frozen_string_literal: true
 
 module Modifyer
-  def new_character(character, movement)
+  def return_character(character, movement, operator)
     return character unless alphabet.include?(character)
 
-    new_index = (alphabet.index(character) + movement) % 27
-    alphabet[new_index]
+    return_index = (alphabet.index(character) + (movement * operator) + 27) % 27
+    alphabet[return_index]
   end
 
-  def old_character(character, movement)
-    return character unless alphabet.include?(character)
-
-    old_index = ((alphabet.index(character) - movement) + 27) % 27
-    alphabet[old_index]
-  end
-
-  def code_maker(to_encrypt, key_made)
+  def code_maker(to_encrypt, key_made, operator)
     to_encrypt.downcase.chars.map.with_index do |letter, index|
-      new_character(letter, key_made[index % 4])
+      return_character(letter, key_made[index % 4], operator)
     end.join
   end
 
@@ -40,15 +33,12 @@ module Modifyer
       next key_recreated << '0' if key_recreated.chars.last.to_i * 10 - 27 == integer
       next key_recreated << integer.to_s if key_recreated.chars.last == '0'
 
-      integer += 27 until key_recreated.chars.last.to_i == integer.digits.last && integer.digits.length > 1
+      until key_recreated.chars.last.to_i == integer.digits.last && integer.digits.length > 1 || integer > 200 do
+        integer += 27
+        require 'pry'; binding.pry
+      end
       key_recreated << (integer.digits.first.to_s)
     end
     key_recreated
-  end
-
-  def code_breaker(string, key)
-    string.downcase.chars.map.with_index do |letter, index|
-      old_character(letter, key[index % 4])
-    end.join
   end
 end
